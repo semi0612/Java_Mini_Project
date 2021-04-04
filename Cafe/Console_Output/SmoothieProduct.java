@@ -14,6 +14,7 @@ public class SmoothieProduct {
 
 
 
+
 class Yogurt extends SmoothieProduct {
 	public Yogurt() {
 		super(4400);
