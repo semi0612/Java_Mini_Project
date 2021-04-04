@@ -1,4 +1,4 @@
-// 매장 관리용
+// 매장 주문 관리용
 
 public class Manager {
 	boolean flag = true;
