@@ -14,6 +14,7 @@ public class CoffeeProduct {
 
 
 
+
 class Latte extends CoffeeProduct {
 	public Latte() {
 		super(3200);
