@@ -58,7 +58,7 @@ After that, Users will see a screen where you can order. <br>
 Selecting the menu to order disables the button, allowing you to select the quantity to order with - +. <br>
 If you press OK after selecting the quantity, the menu name, unit price, quantity, and total will be written in the window below. <br>
 
-### Order button
+### select the "주문"
 ![주문 누르면 뜨는 팝업](https://user-images.githubusercontent.com/51469989/113513784-3a4a7500-95a6-11eb-9898-73432cbf4d6c.JPG) <br>
 When you press the Order button, the user's order as a pop-up, showing the greeting and the points to be accumulated. <br>
 
