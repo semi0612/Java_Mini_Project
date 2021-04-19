@@ -5,71 +5,72 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-// DB¿Í ¿¬°áÇÏ±â
+
+// DBì™€ ì—°ê²°í•˜ê¸°
 public class MemberDAO {
-	// »ç¿ëÇÒ DB´Â ¿À¶óÅ¬
+	// ì‚¬ìš©í•  DBëŠ” ì˜¤ë¼í´
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	// IP ³ª ·ÎÄÃÈ£½ºÆ®·Î ¿¬°áÇÏ´Âµ¥, ÀÌ¹ø¿¡´Â ·ÎÄÃ·Î ¿¬°á
-	// @È£½ºÆ® ÀÌ¸§ : Æ÷Æ®¹øÈ£ : SID
+	// IP ë‚˜ ë¡œì»¬í˜¸ìŠ¤íŠ¸ë¡œ ì—°ê²°í•˜ëŠ”ë°, ì´ë²ˆì—ëŠ” ë¡œì»¬ë¡œ ì—°ê²°
+	// @í˜¸ìŠ¤íŠ¸ ì´ë¦„ : í¬íŠ¸ë²ˆí˜¸ : SID
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	// °èÁ¤ÀÇ ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ³Ö¾î¼­ ·Î±×ÀÎÇÏ±â
+	// ê³„ì •ì˜ ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë„£ì–´ì„œ ë¡œê·¸ì¸í•˜ê¸°
 	String userid = "System";
 	String passwd = "hb0317vd";
 
 	public MemberDAO() {
 		try {
-			// ¿À¶óÅ¬À» ÀÚ¹Ù¿¡¼­ ÀÌ¿ëÇÏ±â À§ÇØ JVM¿¡ ¿Ã·ÁÁØ°Í
+			// ì˜¤ë¼í´ì„ ìë°”ì—ì„œ ì´ìš©í•˜ê¸° ìœ„í•´ JVMì— ì˜¬ë ¤ì¤€ê²ƒ
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// ÀÛ¼º ¼ø¼­ ¨ç ÄÃ·º¼ÇÀ¸·Î ¸®ÅÏÀ» ÇÏ´Â select¹® »ı¼º
+	// ì‘ì„± ìˆœì„œ â‘  ì»¬ë ‰ì…˜ìœ¼ë¡œ ë¦¬í„´ì„ í•˜ëŠ” selectë¬¸ ìƒì„±
 	public ArrayList<MemberDTO> select() {
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
-		// connection ¸ÎÀ»°Å ¼±¾ğ ¹× ÃÊ±âÈ­
+		// connection ë§ºì„ê±° ì„ ì–¸ ë° ì´ˆê¸°í™”
 		Connection con = null;
-		// PreparedStatement ¼±¾ğ ¹× ÃÊ±âÈ­
-		// : SQL¹®À» ÇÑ¹ø¸¸ ÀÛ¼ºÇÏ°í µ¥ÀÌÅÍ¸¸ ³ªÁß¿¡ Ãß°¡·Î ¼³Á¤ÇÏ¸é ÀÛ¾÷À» ÇÒ ¼ö ÀÖ´Â API
-		// : »õ·Î¿î ·¹ÄÚµå¸¦ ¿©·¯¹ø ÀúÀåÇÏ´Â °æ¿ì, ÇÑ¹ø¸¸ insert¹®À» »ı¼ºÇÏ¸é µÇ±â ¶§¹®¿¡ Áßº¹ ÄÚµå°¡ Á¦°ÅµÇ´Ï ¼º´ÉÀÌ ¶Ù¾î³ª°í
-		// : ''À» Á÷Á¢ ÁöÁ¤ÇÏÁö ¾Ê±â ¶§¹®¿¡ ¿¹¿Ü¹ß»ıÀ²ÀÌ Àû¾îÁø´Ù
+		// PreparedStatement ì„ ì–¸ ë° ì´ˆê¸°í™”
+		// : SQLë¬¸ì„ í•œë²ˆë§Œ ì‘ì„±í•˜ê³  ë°ì´í„°ë§Œ ë‚˜ì¤‘ì— ì¶”ê°€ë¡œ ì„¤ì •í•˜ë©´ ì‘ì—…ì„ í•  ìˆ˜ ìˆëŠ” API
+		// : ìƒˆë¡œìš´ ë ˆì½”ë“œë¥¼ ì—¬ëŸ¬ë²ˆ ì €ì¥í•˜ëŠ” ê²½ìš°, í•œë²ˆë§Œ insertë¬¸ì„ ìƒì„±í•˜ë©´ ë˜ê¸° ë•Œë¬¸ì— ì¤‘ë³µ ì½”ë“œê°€ ì œê±°ë˜ë‹ˆ ì„±ëŠ¥ì´ ë›°ì–´ë‚˜ê³ 
+		// : ''ì„ ì§ì ‘ ì§€ì •í•˜ì§€ ì•Šê¸° ë•Œë¬¸ì— ì˜ˆì™¸ë°œìƒìœ¨ì´ ì ì–´ì§„ë‹¤
 		PreparedStatement pstmt = null;
-		// °á°ú ¹Ş¾Æ¿Ã²¨ ¼±¾ğ ¹× ÃÊ±âÈ­
+		// ê²°ê³¼ ë°›ì•„ì˜¬êº¼ ì„ ì–¸ ë° ì´ˆê¸°í™”
 		ResultSet rs = null;
 
 		try {
-			// ¿¬°á ÇÏ±â
+			// ì—°ê²° í•˜ê¸°
 			con = DriverManager.getConnection(url, userid, passwd);
 
-			// DB¿¡ º¸³¾ SQL¹® ¸¸µé±â
+			// DBì— ë³´ë‚¼ SQLë¬¸ ë§Œë“¤ê¸°
 			String query = "select * from member";
 			pstmt = con.prepareStatement(query);
 
-			// pstmt·Î º¸³½ ¹®ÀåÀ» ½ÇÇàÇÏ°í °á°ú¸¦ rs¿¡ ÀúÀå
+			// pstmtë¡œ ë³´ë‚¸ ë¬¸ì¥ì„ ì‹¤í–‰í•˜ê³  ê²°ê³¼ë¥¼ rsì— ì €ì¥
 			rs = pstmt.executeQuery();
 
-			// rs¿¡ ÀúÀåµÈ ±×´Ï±î ¸®ÅÏ µÈ ÀÚ·á°¡ ÀÖ´Ù¸é °¡Á®¿À±â
+			// rsì— ì €ì¥ëœ ê·¸ë‹ˆê¹Œ ë¦¬í„´ ëœ ìë£Œê°€ ìˆë‹¤ë©´ ê°€ì ¸ì˜¤ê¸°
 			while (rs.next()) {
 				MemberDTO dto = new MemberDTO();
-				// columnIndex : °¡Á®¿Ã ÄÃ·³ ¸í
-				// À» ¹®ÀÚÇüÀ¸·Î °¡Á®¿Í¼­(getString)
-				// dtoÀÇ setName()¿¡ ³Ö¾îÁà¶ó
+				// columnIndex : ê°€ì ¸ì˜¬ ì»¬ëŸ¼ ëª…
+				// ì„ ë¬¸ìí˜•ìœ¼ë¡œ ê°€ì ¸ì™€ì„œ(getString)
+				// dtoì˜ setName()ì— ë„£ì–´ì¤˜ë¼
 				dto.setName(rs.getString("name"));
 
 				dto.setAge(rs.getInt("age"));
 				dto.setHeight(rs.getInt("height"));
 				dto.setWeight(rs.getInt("weight"));
-				// ¼ºº°À» char·Î ¼³Á¤ÇØÁá±â ¶§¹®¿¡ charAt(0) ÇØÁÖ±â
+				// ì„±ë³„ì„ charë¡œ ì„¤ì •í•´ì¤¬ê¸° ë•Œë¬¸ì— charAt(0) í•´ì£¼ê¸°
 				dto.setSex(rs.getString("sex").charAt(0));
 
-				// ÀÚ·á¸¦ list¿¡ ´õÇÏ±â
+				// ìë£Œë¥¼ listì— ë”í•˜ê¸°
 				list.add(dto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-		// ¿¹¿Ü »ó°ü¾øÀÌ ÇÊ¼ö ½ÇÇà
+		// ì˜ˆì™¸ ìƒê´€ì—†ì´ í•„ìˆ˜ ì‹¤í–‰
 		} finally {
 			try {
 				if (rs != null) {	rs.close(); }
@@ -81,31 +82,31 @@ public class MemberDAO {
 	} // end select()
 
 
-	// ÀÛ¼º¼ø¼­ ¨è MemberGUI¿¡ ÀÔ·ÂÇÑ µ¥ÀÌÅÍ¸¦ MemberDAO Å¬·¡½ºÀÇ insert ¸Ş¼Òµå¿¡ ³Ñ°ÜÁØ´Ù
+	// ì‘ì„±ìˆœì„œ â‘¡ MemberGUIì— ì…ë ¥í•œ ë°ì´í„°ë¥¼ MemberDAO í´ë˜ìŠ¤ì˜ insert ë©”ì†Œë“œì— ë„˜ê²¨ì¤€ë‹¤
 	public void insert(String name, String age, String height, String weight, String sex ) {
          Connection con = null;
          PreparedStatement pstmt  = null;
 
 		try {
 			con = DriverManager.getConnection(url, userid, passwd);
-			// ³Ñ°ÜÁÙ °Í
+			// ë„˜ê²¨ì¤„ ê²ƒ
 	        String query = "insert into member(name, age, height, weight, sex) values (?, ?, ?, ?, ?) ";
 			pstmt = con.prepareStatement(query);
 
-			// ? Ã¤¿ì±â
-			// (Ã¹¹øÂ° ÀÎµ¦½º¿¡, ÀÌ¸§À» ³Ö°Ú´Ù)
+			// ? ì±„ìš°ê¸°
+			// (ì²«ë²ˆì§¸ ì¸ë±ìŠ¤ì—, ì´ë¦„ì„ ë„£ê² ë‹¤)
 			pstmt.setString(1, name);
-			// (µÎ¹øÂ° ÀÎµ¦½º¿¡, ³ªÀÌ¸¦ ³Ö°Ú´Ù)
+			// (ë‘ë²ˆì§¸ ì¸ë±ìŠ¤ì—, ë‚˜ì´ë¥¼ ë„£ê² ë‹¤)
 			pstmt.setInt(2, Integer.parseInt(age));
 			pstmt.setInt(3, Integer.parseInt(height));
 			pstmt.setInt(4, Integer.parseInt(weight));
 			pstmt.setString(5, sex);
 			
-			// ÀÚ¹Ù¿¡¼­ ½ÇÇàÇÒ ¶§
-			// : °Ë»öÀº executeQuery()
-			// : »ğÀÔ, »èÁ¦, ¼öÁ¤Àº executeUpdate()
+			// ìë°”ì—ì„œ ì‹¤í–‰í•  ë•Œ
+			// : ê²€ìƒ‰ì€ executeQuery()
+			// : ì‚½ì…, ì‚­ì œ, ìˆ˜ì •ì€ executeUpdate()
 			
-			// »ğÀÔÇÑ ÀÚ·áÀÇ '°¹¼ö'°¡ ¸®ÅÏµÇ´Ï int·Î ¹ŞÀ½
+			// ì‚½ì…í•œ ìë£Œì˜ 'ê°¯ìˆ˜'ê°€ ë¦¬í„´ë˜ë‹ˆ intë¡œ ë°›ìŒ
 			int result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -117,7 +118,7 @@ public class MemberDAO {
 		}
 	}
 	
-	// delete¹® ÀÛ¼º
+	// deleteë¬¸ ì‘ì„±
 	public void delete(String name) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -127,7 +128,7 @@ public class MemberDAO {
 			String query = "delete from member where name=? ";
 			pstmt = con.prepareStatement(query);
 			
-			// ? Ã¤¿ì±â
+			// ? ì±„ìš°ê¸°
 			pstmt.setString(1, name);
 			int result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -140,7 +141,7 @@ public class MemberDAO {
 		}
 	}
 
-	// ¼öÁ¤ÇÏ±â
+	// ìˆ˜ì •í•˜ê¸°
 	public void update(String name, String age, String height, String weight, String sex) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -156,7 +157,7 @@ public class MemberDAO {
 			pstmt.setString(4, sex);
 			pstmt.setString(5, name);
 			
-			// »ğÀÔÇÑ ÀÚ·áÀÇ '°¹¼ö'°¡ ¸®ÅÏµÇ´Ï int·Î ¹ŞÀ½
+			// ì‚½ì…í•œ ìë£Œì˜ 'ê°¯ìˆ˜'ê°€ ë¦¬í„´ë˜ë‹ˆ intë¡œ ë°›ìŒ
 			int result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {	}
@@ -169,12 +170,12 @@ public class MemberDAO {
 	}
 
 	
-	// °Ë»öÇÏ±â
+	// ê²€ìƒ‰í•˜ê¸°
 	public MemberDTO search(String name) throws RecordNotFoundException {
-		// Ãß°¡ ÀÛ¼º(¿¹¿ÜÃ³¸®)
-		if( !isExist(name)) throw new RecordNotFoundException("Ã£´Â »ç¶÷ÀÌ ¾ø½À´Ï´Ù");
+		// ì¶”ê°€ ì‘ì„±(ì˜ˆì™¸ì²˜ë¦¬)
+		if( !isExist(name)) throw new RecordNotFoundException("ì°¾ëŠ” ì‚¬ëŒì´ ì—†ìŠµë‹ˆë‹¤");
 		
-		// ±âº» ÀÛ¼º
+		// ê¸°ë³¸ ì‘ì„±
 		MemberDTO dto = new MemberDTO();
 		
 		Connection con = null;
@@ -189,7 +190,7 @@ public class MemberDAO {
 			
 			result = pstmt.executeQuery();
 			
-			// ¸®ÅÏ µÈ ÀÚ·á°¡ ÀÖ´Ù¸é °¡Á®¿À±â
+			// ë¦¬í„´ ëœ ìë£Œê°€ ìˆë‹¤ë©´ ê°€ì ¸ì˜¤ê¸°
 			while (result.next()) {
 				dto.setName( result.getString("name"));
 				dto.setAge( result.getInt("age"));
@@ -198,7 +199,7 @@ public class MemberDAO {
 				dto.setSex( result.getString("sex").charAt(0));
 			}
 		} catch (SQLException e) {	}
-		// ¿¹¿Ü »ó°ü¾øÀÌ ÇÊ¼ö ½ÇÇà
+		// ì˜ˆì™¸ ìƒê´€ì—†ì´ í•„ìˆ˜ ì‹¤í–‰
 		finally {
 			try {
 				if (result != null) { result.close(); }
@@ -209,7 +210,7 @@ public class MemberDAO {
 		return dto;
 	}
 
-	// ¿¹¿ÜÃ³¸® : DB¿¡ ÇØ´ç ÀÌ¸§ÀÌ Á¸ÀçÇÏ´ÂÁö Ã£¾Æº¸±â
+	// ì˜ˆì™¸ì²˜ë¦¬ : DBì— í•´ë‹¹ ì´ë¦„ì´ ì¡´ì¬í•˜ëŠ”ì§€ ì°¾ì•„ë³´ê¸°
 	public boolean isExist(String name) {
 		boolean result = false;
 		
