@@ -2,8 +2,9 @@
 
 ✨ 공부하며 작성한 JAVA 프로젝트 정리
 
-✨ 사용 프로그램
-: Eclipse (Java8_oxygen version)
+✨ 사용 프로그램 <br>
+: Eclipse (Java8_oxygen version) <br>
+: Oracle DataBase
 
 ## 🌱
 
