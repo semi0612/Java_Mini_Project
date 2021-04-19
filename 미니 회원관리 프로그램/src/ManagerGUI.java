@@ -8,14 +8,13 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-
-// ÇöÀç Å¬·¡½º : È­¸é ¼³°è
+// í˜„ì¬ í´ë˜ìŠ¤ : í™”ë©´ ì„¤ê³„
 public class ManagerGUI {
-	// ÇÁ·¹ÀÓ ¸¸µé±â
+	// í”„ë ˆì„ ë§Œë“¤ê¸°
 	Frame frame;
-	// ÆÇ³Ú
+	// íŒë„¬
 	Panel[] panel;
-	// ¶óº§(È¸¿ø °ü¸®¿¡ »ç¿ëÇÒ °Íµé)
+	// ë¼ë²¨(íšŒì› ê´€ë¦¬ì— ì‚¬ìš©í•  ê²ƒë“¤)
 	Label lblTitle, lblName, lblHeight, lblWeight, lblSex, lblAge, lblStatus;
 	TextField tfName, tfHeight, tfAge, tfWeight;
 	Button btnSave, btnDelete, btnUpdate, btnReset, btnSearch;
@@ -23,28 +22,28 @@ public class ManagerGUI {
 	Checkbox chMale, chFemale;
 	CheckboxGroup chGroup;
 
-	// ½ÃÀÛÇÏÀÚ¸¶ÀÚ À©µµ¿ì ¶ßµµ·Ï
+	// ì‹œì‘í•˜ìë§ˆì ìœˆë„ìš° ëœ¨ë„ë¡
 	public ManagerGUI() {
-		frame = new Frame("È¸¿ø°ü¸®");
-		// ÆÇ³Ú 13°³ ÁØºñÇÏ±â
+		frame = new Frame("íšŒì›ê´€ë¦¬");
+		// íŒë„¬ 13ê°œ ì¤€ë¹„í•˜ê¸°
 		panel = new Panel[13];
 		for (int i = 0; i < panel.length; i++) {
-			// i°¡ Áõ°¡ÇÏ¸é¼­ »õ·Î¿î ÆÇ³Ú ÀÚ¸®°¡ »ı¼ºµÈ´Ù
+			// iê°€ ì¦ê°€í•˜ë©´ì„œ ìƒˆë¡œìš´ íŒë„¬ ìë¦¬ê°€ ìƒì„±ëœë‹¤
 			panel[i] = new Panel();
 		}
-		lblTitle = new Label("È¸¿ø°ü¸®", Label.CENTER);
-		// ÆùÆ® ¼³Á¤
+		lblTitle = new Label("íšŒì›ê´€ë¦¬", Label.CENTER);
+		// í°íŠ¸ ì„¤ì •
 		Font font = new Font("dialog", Font.BOLD, 20);
-		// ÆùÆ® ¼³Á¤À» ¶óº§ Å¸ÀÌÆ²¿¡ ºÙÀÌ±â
+		// í°íŠ¸ ì„¤ì •ì„ ë¼ë²¨ íƒ€ì´í‹€ì— ë¶™ì´ê¸°
 		lblTitle.setFont(font);
 		lblTitle.setForeground(new Color(139, 54, 32));
-		lblName = new Label("ÀÌ¸§");
-		lblAge = new Label("³ªÀÌ");
-		lblHeight = new Label("Å°");
-		lblWeight = new Label("Ã¼Áß");
-		lblSex = new Label("¼ºº°");
-		// ÇÏ´Ü¿¡ À§Ä¡½ÃÅ³ »óÅÂ Ç¥½ÃÃ¢
-		// Ã³À½¿¡´Â ÀúÀåµÈ ³»¿ëÀÌ ¾øÀ¸´Ï ºñ¾îÀÖ°Ô Ç¥½Ã
+		lblName = new Label("ì´ë¦„");
+		lblAge = new Label("ë‚˜ì´");
+		lblHeight = new Label("í‚¤");
+		lblWeight = new Label("ì²´ì¤‘");
+		lblSex = new Label("ì„±ë³„");
+		// í•˜ë‹¨ì— ìœ„ì¹˜ì‹œí‚¬ ìƒíƒœ í‘œì‹œì°½
+		// ì²˜ìŒì—ëŠ” ì €ì¥ëœ ë‚´ìš©ì´ ì—†ìœ¼ë‹ˆ ë¹„ì–´ìˆê²Œ í‘œì‹œ
 		lblStatus = new Label("");
 		lblStatus.setBackground(Color.LIGHT_GRAY);
 		tfName = new TextField("");
@@ -52,23 +51,23 @@ public class ManagerGUI {
 		tfWeight = new TextField("");
 		tfAge = new TextField("");
 
-		// ¹öÆ° »ı¼º ¹× ¹öÆ°¸í ¼³Á¤
-		btnSave = new Button("ÀúÀå");
-		btnSearch = new Button("°Ë»ö");
-		btnDelete = new Button("»èÁ¦");
-		btnUpdate = new Button("¼öÁ¤");
-		btnReset = new Button("Áö¿ì±â");
+		// ë²„íŠ¼ ìƒì„± ë° ë²„íŠ¼ëª… ì„¤ì •
+		btnSave = new Button("ì €ì¥");
+		btnSearch = new Button("ê²€ìƒ‰");
+		btnDelete = new Button("ì‚­ì œ");
+		btnUpdate = new Button("ìˆ˜ì •");
+		btnReset = new Button("ì§€ìš°ê¸°");
 
-		// ±×·ì °´Ã¼»ı¼ºÇÏ±â
+		// ê·¸ë£¹ ê°ì²´ìƒì„±í•˜ê¸°
 		chGroup = new CheckboxGroup();
-		// ("¹öÆ°¸í", ±×·ìÇ¥½Ã, ±âº»°ª-false·Î µÇ¾îÀÖ´Ù¸é Ã¼Å© ¾ÈÇÑ °ÍÀÌ ±âº»)
+		// ("ë²„íŠ¼ëª…", ê·¸ë£¹í‘œì‹œ, ê¸°ë³¸ê°’-falseë¡œ ë˜ì–´ìˆë‹¤ë©´ ì²´í¬ ì•ˆí•œ ê²ƒì´ ê¸°ë³¸)
 		chMale = new Checkbox("Male", chGroup, false);
 		chFemale = new Checkbox("Female", chGroup, false);
 		
-		// ¸®½ºÆ®¿¡ ±âº» °ª ÁÖ±â
+		// ë¦¬ìŠ¤íŠ¸ì— ê¸°ë³¸ ê°’ ì£¼ê¸°
 		list = new List(7, false);
 
-		// À©µµ¿ì Ã¢À» ´İÀ¸¸é Á¤»óÁ¾·á µÇµµ·Ï ¼³Á¤
+		// ìœˆë„ìš° ì°½ì„ ë‹«ìœ¼ë©´ ì •ìƒì¢…ë£Œ ë˜ë„ë¡ ì„¤ì •
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -77,14 +76,14 @@ public class ManagerGUI {
 		});
 		
 		/*
-		 ÀÛ¼º 2
-		 1. MemberGUI¿¡ ÀÔ·ÂÇÑ µ¥ÀÌÅÍ¸¦
-		 MemberDAO Å¬·¡½ºÀÇ insert ¸Ş¼Òµå¿¡ ³Ñ°ÜÁØ´Ù
-		 2. MemberDAO¿¡¼­ DBÀÇ member Å×ÀÌºí¿¡ insert¹®À» ÀÌ¿ëÇØ¼­ ÀÔ·Âµ¥ÀÌÅÍ¸¦ ÀúÀå
-		 3. MemberGUI¿¡¼­ ÀúÀå½ÃÅ² µ¥ÀÌÅÍ±îÁö Æ÷ÇÔÇÏ¿© ³»¿ëÀ» Ãâ·Â½ÃÅ°±â À§ÇØ
-		 	displayAll()¸Ş¼Òµå¸¦ È£Ãâ
+		 ì‘ì„± 2
+		 1. MemberGUIì— ì…ë ¥í•œ ë°ì´í„°ë¥¼
+		 MemberDAO í´ë˜ìŠ¤ì˜ insert ë©”ì†Œë“œì— ë„˜ê²¨ì¤€ë‹¤
+		 2. MemberDAOì—ì„œ DBì˜ member í…Œì´ë¸”ì— insertë¬¸ì„ ì´ìš©í•´ì„œ ì…ë ¥ë°ì´í„°ë¥¼ ì €ì¥
+		 3. MemberGUIì—ì„œ ì €ì¥ì‹œí‚¨ ë°ì´í„°ê¹Œì§€ í¬í•¨í•˜ì—¬ ë‚´ìš©ì„ ì¶œë ¥ì‹œí‚¤ê¸° ìœ„í•´
+		 	displayAll()ë©”ì†Œë“œë¥¼ í˜¸ì¶œ
 		 */
-		// insert»ç¿ëÇÏ±â À§ÇÑ ÀÛ¼º, ¹öÆ°¿¡ ±â´É ¿¬°áÇÏ±â
+		// insertì‚¬ìš©í•˜ê¸° ìœ„í•œ ì‘ì„±, ë²„íŠ¼ì— ê¸°ëŠ¥ ì—°ê²°í•˜ê¸°
 		btnSave.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -93,9 +92,9 @@ public class ManagerGUI {
 				String height = tfHeight.getText();
 				String weight = tfWeight.getText();
 				
-				String sex = "¿©";
-				// ³²ÀÚÂÊÀÇ ¹öÆ°ÀÌ ´­·¯Á®ÀÖÀ¸¸é  ÀÌÂÊÀÌ true
-				if(chMale.getState()) { sex = "³²";	}
+				String sex = "ì—¬";
+				// ë‚¨ììª½ì˜ ë²„íŠ¼ì´ ëˆŒëŸ¬ì ¸ìˆìœ¼ë©´  ì´ìª½ì´ true
+				if(chMale.getState()) { sex = "ë‚¨";	}
 				
 				MemberDAO dao = new MemberDAO();
 				dao.insert(name, age, height, weight, sex);
@@ -103,7 +102,7 @@ public class ManagerGUI {
 			}
 		});
 		
-		// ÀÛ¼º 3. Áö¿ì±â ¹öÆ°À» ´©¸£¸é ÀÔ·ÂÇÏ´ø ³»¿ëÀÌ ¸ğµÎ Áö¿öÁ®¾ß ÇÑ´Ù.
+		// ì‘ì„± 3. ì§€ìš°ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ì…ë ¥í•˜ë˜ ë‚´ìš©ì´ ëª¨ë‘ ì§€ì›Œì ¸ì•¼ í•œë‹¤.
 		btnReset.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,12 +113,12 @@ public class ManagerGUI {
 			}
 		});
 		
-		// ÀÛ¼º 4. ¸®½ºÆ®¿¡ ÀÖ´Â °ªÀ» ´©¸£¸é ÅØ½ºÆ®ÇÊµå¿¡ ´Ù½Ã Ã¤¿öÁö°Ô²û ±¸Çö
-		// ¸®½ºÆ®°¡ ´­¸°°É °¨ÁöÇÏ´Â ¸®½ºÅÍ
+		// ì‘ì„± 4. ë¦¬ìŠ¤íŠ¸ì— ìˆëŠ” ê°’ì„ ëˆ„ë¥´ë©´ í…ìŠ¤íŠ¸í•„ë“œì— ë‹¤ì‹œ ì±„ì›Œì§€ê²Œë” êµ¬í˜„
+		// ë¦¬ìŠ¤íŠ¸ê°€ ëˆŒë¦°ê±¸ ê°ì§€í•˜ëŠ” ë¦¬ìŠ¤í„°
 		list.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// ¸®½ºÆ®ÀÇ ³»¿ëµéÀÌ StringÀ¸·Î str¿¡ ´ã±è
+				// ë¦¬ìŠ¤íŠ¸ì˜ ë‚´ìš©ë“¤ì´ Stringìœ¼ë¡œ strì— ë‹´ê¹€
 				String str = list.getSelectedItem();
 				StringTokenizer st = new StringTokenizer(str);
 				tfName.setText(st.nextToken());
@@ -128,7 +127,7 @@ public class ManagerGUI {
 				tfHeight.setText(st.nextToken());
 				
 				String sex = st.nextToken();
-				if(sex.equals("¿©")) {
+				if(sex.equals("ì—¬")) {
 					chFemale.setState(true);
 				} else {
 					chMale.setState(true);
@@ -136,7 +135,7 @@ public class ManagerGUI {
 			}
 		});
 		
-		// ÀÛ¼º 5. tfName ÂÊ¿¡ »èÁ¦ÇÒ ÀÌ¸§À» ÀÛ¼ºÇÏ¸é ¸®½ºÆ®¿¡ ÀÖ´Â ÇØ´ç È¸¿ø Á¤º¸°¡ »èÁ¦
+		// ì‘ì„± 5. tfName ìª½ì— ì‚­ì œí•  ì´ë¦„ì„ ì‘ì„±í•˜ë©´ ë¦¬ìŠ¤íŠ¸ì— ìˆëŠ” í•´ë‹¹ íšŒì› ì •ë³´ê°€ ì‚­ì œ
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -148,7 +147,7 @@ public class ManagerGUI {
 			}
 		});
 		
-		// ÀÛ¼º 6. È¸¿øÁ¤º¸ ¼öÁ¤ÇÏ±â, ÀÌ¸§À» ¹Ş¾Æ¼­ ¼öÁ¤ÇÒ °ÍÀÌ´Ù.
+		// ì‘ì„± 6. íšŒì›ì •ë³´ ìˆ˜ì •í•˜ê¸°, ì´ë¦„ì„ ë°›ì•„ì„œ ìˆ˜ì •í•  ê²ƒì´ë‹¤.
 		btnUpdate.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -157,9 +156,9 @@ public class ManagerGUI {
 				String height = tfHeight.getText();
 				String weight = tfWeight.getText();
 				
-				String sex = "¿©";
-				// ³²ÀÚÂÊÀÇ ¹öÆ°ÀÌ ´­·¯Á®ÀÖÀ¸¸é  ÀÌÂÊÀÌ true
-				if(chMale.getState()) { sex = "³²";	}
+				String sex = "ì—¬";
+				// ë‚¨ììª½ì˜ ë²„íŠ¼ì´ ëˆŒëŸ¬ì ¸ìˆìœ¼ë©´  ì´ìª½ì´ true
+				if(chMale.getState()) { sex = "ë‚¨";	}
 				
 				MemberDAO dao = new MemberDAO();
 				dao.update(name, age, height, weight, sex);
@@ -167,11 +166,11 @@ public class ManagerGUI {
 			}
 		});
 		
-		// ÀÛ¼º 7. °Ë»ö¹öÆ°
+		// ì‘ì„± 7. ê²€ìƒ‰ë²„íŠ¼
 		btnSearch.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 1. ±âº»ÀÛ¼º
+				// 1. ê¸°ë³¸ì‘ì„±
 //				String name = tfName.getText();
 //				
 //				MemberDTO dto = new MemberDTO();
@@ -183,16 +182,16 @@ public class ManagerGUI {
 //				tfWeight.setText( Integer.toString(dto.getWeight()) );
 //				
 //				String sex = Character.toString( (dto.getSex()) );
-//				if(sex.equals("¿©")) {
+//				if(sex.equals("ì—¬")) {
 //					chFemale.setState(true);
 //				} else {
 //					chMale.setState(true);
 //				}
 //				displayAll();
 				
-				//2. °Ë»ö½Ã ÇØ´ç µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾ÊÀ»¶§ÀÇ ¿¹¿ÜÃ³¸®
-				// RecordNotFoundException Å¬·¡½º »ı¼º
-				// DAO ¿¡ isExist ¸Ş¼Òµå »ı¼º ÈÄ
+				//2. ê²€ìƒ‰ì‹œ í•´ë‹¹ ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ë•Œì˜ ì˜ˆì™¸ì²˜ë¦¬
+				// RecordNotFoundException í´ë˜ìŠ¤ ìƒì„±
+				// DAO ì— isExist ë©”ì†Œë“œ ìƒì„± í›„
 				String name = tfName.getText();
 				
 				MemberDTO dto = new MemberDTO();
@@ -201,24 +200,24 @@ public class ManagerGUI {
 				try {
 					dto = dao.search(name);
 				} catch (RecordNotFoundException e1) {
-					// ¿¹¿Ü°¡ ¹ß»ıÇÏ¸é µû·Î °æ°íÃ¢À» ¶ç¿ï °ÍÀÌ´Ù
-					final Dialog dialog = new Dialog(frame, "°æ°í");
+					// ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ ë”°ë¡œ ê²½ê³ ì°½ì„ ë„ìš¸ ê²ƒì´ë‹¤
+					final Dialog dialog = new Dialog(frame, "ê²½ê³ ");
 					
 					dialog.setLayout(new FlowLayout());
 					dialog.setSize(300, 80);
-					// Á¦¸ñÀº ¼³Á¤ÇÑ ¿¡·¯¸Ş¼¼Áö¸¦ °¡Á®¿Â´Ù
+					// ì œëª©ì€ ì„¤ì •í•œ ì—ëŸ¬ë©”ì„¸ì§€ë¥¼ ê°€ì ¸ì˜¨ë‹¤
 					dialog.setTitle(e1.getMessage());
 					
-					Button btnOk = new Button("È®ÀÎ");
+					Button btnOk = new Button("í™•ì¸");
 					btnOk.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							// È®ÀÎ¹öÆ° ´©¸£¸é °æ°íÃ¢ »ç¶óÁöµµ·Ï
-							// Ã¢ ÇÏ³ª¸¸ Á¾·á½ÃÅ°´Â °Í
+							// í™•ì¸ë²„íŠ¼ ëˆ„ë¥´ë©´ ê²½ê³ ì°½ ì‚¬ë¼ì§€ë„ë¡
+							// ì°½ í•˜ë‚˜ë§Œ ì¢…ë£Œì‹œí‚¤ëŠ” ê²ƒ
 							dialog.dispose();
 						}
 					});
-					// ¹öÆ° ³»¿ëÀ» dialog¿¡ ºÙÀÌ°Ú´Ù
+					// ë²„íŠ¼ ë‚´ìš©ì„ dialogì— ë¶™ì´ê² ë‹¤
 					dialog.add(btnOk);
 					dialog.setVisible(true);
 				}
@@ -229,7 +228,7 @@ public class ManagerGUI {
 				tfWeight.setText( Integer.toString(dto.getWeight()) );
 				
 				String sex = Character.toString( (dto.getSex()) );
-				if(sex.equals("¿©")) {
+				if(sex.equals("ì—¬")) {
 					chFemale.setState(true);
 				} else {
 					chMale.setState(true);
@@ -239,29 +238,29 @@ public class ManagerGUI {
 		});
 	}
 
-	// È­¸éÀ» Á¶¸³ÇÏ´Â ¸Ş¼Òµå
+	// í™”ë©´ì„ ì¡°ë¦½í•˜ëŠ” ë©”ì†Œë“œ
 	private void launchFrame() {
-		// 1¹ø ÆÇ³ÚÀ» 2Çà 1¿­Â¥¸® Grid·Î Á¦ÀÛ
+		// 1ë²ˆ íŒë„¬ì„ 2í–‰ 1ì—´ì§œë¦¬ Gridë¡œ ì œì‘
 		panel[1].setLayout(new GridLayout(2, 1));
-		// "ÀÌ¸§" "Å°" ¶ó´Â ¶óº§À» ºÙÀÓ
+		// "ì´ë¦„" "í‚¤" ë¼ëŠ” ë¼ë²¨ì„ ë¶™ì„
 		panel[1].add(lblName);
 		panel[1].add(lblHeight);
 
-		// 2¹ø ÆÇ³Úµµ 2Çà 1¿­Â¥¸® Grid·Î Á¦ÀÛ
+		// 2ë²ˆ íŒë„¬ë„ 2í–‰ 1ì—´ì§œë¦¬ Gridë¡œ ì œì‘
 		panel[2].setLayout(new GridLayout(2, 1));
-		// ÀÔ·ÂÇÒ ¼ö ÀÖ´Â textField°¡ »ı¼ºµÊ
+		// ì…ë ¥í•  ìˆ˜ ìˆëŠ” textFieldê°€ ìƒì„±ë¨
 		panel[2].add(tfName);
 		panel[2].add(tfHeight);
 
-		// µ¿¼­³²ºÏ ¾î´À°÷¿¡ À§Ä¡½ÃÅ³ °ÍÀÎ°¡
+		// ë™ì„œë‚¨ë¶ ì–´ëŠê³³ì— ìœ„ì¹˜ì‹œí‚¬ ê²ƒì¸ê°€
 		panel[3].setLayout(new BorderLayout());
-		// ÆÇ³Ú 1¹øÀ» ¼­ÂÊ¿¡ ºÎÂø, ÆÇ³Ú 2¹øÀº Áß¾Ó¿¡ ºÎÂø, µ¿ÂÊ¿¡´Â °ø¹éÀ» Ãß°¡
+		// íŒë„¬ 1ë²ˆì„ ì„œìª½ì— ë¶€ì°©, íŒë„¬ 2ë²ˆì€ ì¤‘ì•™ì— ë¶€ì°©, ë™ìª½ì—ëŠ” ê³µë°±ì„ ì¶”ê°€
 		panel[3].add(panel[1], "West");
 		panel[3].add(panel[2], "Center");
 		panel[3].add(new Label(""), "East");
 
 		
-		// ¹İº¹
+		// ë°˜ë³µ
 		panel[4].setLayout(new GridLayout(2, 1));
 		panel[4].add(lblAge);
 		panel[4].add(lblWeight);
@@ -291,11 +290,11 @@ public class ManagerGUI {
 		panel[10].setLayout(new GridLayout(1, 5));
 		panel[10].setBackground(Color.black);
 		panel[10].setForeground(Color.white);
-		panel[10].add(new Label("ÀÌ ¸§ "));
-		panel[10].add(new Label("³ª ÀÌ "));
-		panel[10].add(new Label("Ã¼ Áß "));
-		panel[10].add(new Label(" Å° "));
-		panel[10].add(new Label("¼º º° "));
+		panel[10].add(new Label("ì´ ë¦„ "));
+		panel[10].add(new Label("ë‚˜ ì´ "));
+		panel[10].add(new Label("ì²´ ì¤‘ "));
+		panel[10].add(new Label(" í‚¤ "));
+		panel[10].add(new Label("ì„± ë³„ "));
 		
 		panel[11].setLayout(new BorderLayout());
 		panel[11].add(panel[10], "North");
@@ -320,32 +319,32 @@ public class ManagerGUI {
 		frame.add(lblStatus, "South");
 		
 		frame.pack();
-		// Ã¢ »çÀÌÁñ¸£ °íÁ¤À¸·Î ¸¸µé±â
+		// ì°½ ì‚¬ì´ì¦ë¥´ ê³ ì •ìœ¼ë¡œ ë§Œë“¤ê¸°
 		frame.setResizable(false);
 		
 		
-		// È­¸éÀÌ º¸ÀÌµµ·Ï ÇÏ±â
+		// í™”ë©´ì´ ë³´ì´ë„ë¡ í•˜ê¸°
 		frame.setSize(350, 500);
 		frame.setVisible(true);
 		
-		// select * from À» ÇÒ ¸Ş¼Òµå
+		// select * from ì„ í•  ë©”ì†Œë“œ
 		displayAll();
-		// insert »ç¿ëÇÏ´Â ¸Ş¼Òµå ºÒ·¯¿À±â
+		// insert ì‚¬ìš©í•˜ëŠ” ë©”ì†Œë“œ ë¶ˆëŸ¬ì˜¤ê¸°
 		
 	}
 	
-	// ÀÛ¼º 1
-	// È­¸é ¶ßÀÚ¸¶ÀÚ DB¿¡ select * from À» ÇØ¼­
-	// È¸¿øÁ¤º¸¸¦ È­¸é¿¡ º¸ÀÌµµ·Ï ÇÒ °Í
+	// ì‘ì„± 1
+	// í™”ë©´ ëœ¨ìë§ˆì DBì— select * from ì„ í•´ì„œ
+	// íšŒì›ì •ë³´ë¥¼ í™”ë©´ì— ë³´ì´ë„ë¡ í•  ê²ƒ
 	private void displayAll() {
-		// ¸®½ºÆ®¿¡ µé¾îÀÖ´Â°É ÀÏ´Ü ´Ù Áö¿ö¶ó
+		// ë¦¬ìŠ¤íŠ¸ì— ë“¤ì–´ìˆëŠ”ê±¸ ì¼ë‹¨ ë‹¤ ì§€ì›Œë¼
 		list.removeAll();
-		// DAO Å¬·¡½º¿Í ¿¬°á
+		// DAO í´ë˜ìŠ¤ì™€ ì—°ê²°
 		MemberDAO dao = new MemberDAO();
-		// select * from ±â´ÉÇÏ´Â ¸Ş¼Òµå È£Ãâ ÈÄ ArrayList<MemberDTO>¿¡ ³Ö±â
+		// select * from ê¸°ëŠ¥í•˜ëŠ” ë©”ì†Œë“œ í˜¸ì¶œ í›„ ArrayList<MemberDTO>ì— ë„£ê¸°
 		ArrayList<MemberDTO> allData = dao.select();
 		
-		// dto¿¡ ÀÖ´Â °É °¡Á®¿Í¼­ ´ã±â
+		// dtoì— ìˆëŠ” ê±¸ ê°€ì ¸ì™€ì„œ ë‹´ê¸°
 		for(MemberDTO dto : allData) {
 			String name = dto.getName();
 			int age = dto.getAge();
@@ -358,7 +357,7 @@ public class ManagerGUI {
 
 	public static void main(String[] args) {
 		ManagerGUI mem = new ManagerGUI();
-		// È­¸é Á¶¸³ÇÏ´Â ¸Ş¼Òµå È£Ãâ
+		// í™”ë©´ ì¡°ë¦½í•˜ëŠ” ë©”ì†Œë“œ í˜¸ì¶œ
 		mem.launchFrame();
 	}
 }
