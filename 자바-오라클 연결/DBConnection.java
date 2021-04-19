@@ -4,7 +4,6 @@
  	-> jdbc(자바 데이터베이스 커넥션) ≒ 오라클 드라이버
  	-> 설치된 곳에서 JRE system Library -> Build path -> Configure Build path -> add External ARGs -> 가져올 jdbc 선택 -> apply and close */
 
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
