@@ -1,3 +1,4 @@
+
 public class MemberDTO {
 	String name;
 	int age;
