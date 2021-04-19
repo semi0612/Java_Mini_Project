@@ -14,8 +14,8 @@ public class MemberDAO {
 	// @호스트 이름 : 포트번호 : SID
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	// 계정의 아이디와 비밀번호를 넣어서 로그인하기
-	String userid = "System";
-	String passwd = "hb0317vd";
+	String userid = "오라클 아이디";
+	String passwd = "오라클 ";
 
 	public MemberDAO() {
 		try {
