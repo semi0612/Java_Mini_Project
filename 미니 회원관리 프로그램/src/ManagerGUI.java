@@ -290,11 +290,11 @@ public class ManagerGUI {
 		panel[10].setLayout(new GridLayout(1, 5));
 		panel[10].setBackground(Color.black);
 		panel[10].setForeground(Color.white);
-		panel[10].add(new Label("이 름 "));
-		panel[10].add(new Label("나 이 "));
-		panel[10].add(new Label("체 중 "));
+		panel[10].add(new Label("이 름"));
+		panel[10].add(new Label("나 이"));
+		panel[10].add(new Label("체 중"));
 		panel[10].add(new Label(" 키 "));
-		panel[10].add(new Label("성 별 "));
+		panel[10].add(new Label("성 별"));
 		
 		panel[11].setLayout(new BorderLayout());
 		panel[11].add(panel[10], "North");
@@ -319,7 +319,7 @@ public class ManagerGUI {
 		frame.add(lblStatus, "South");
 		
 		frame.pack();
-		// 창 사이즐르 고정으로 만들기
+		// 창 사이즈를 사용자가 임의로 변형할 수 없게 고정으로 만들기
 		frame.setResizable(false);
 		
 		
