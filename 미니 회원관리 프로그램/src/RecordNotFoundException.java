@@ -1,5 +1,5 @@
 
-// »ç¿ëÀÚ Á¤ÀÇ ¿¹¿Ü
+// ì‚¬ìš©ì ì •ì˜ ì˜ˆì™¸
 public class RecordNotFoundException extends Exception{
 	 public RecordNotFoundException(String message) {
 		 super(message);
