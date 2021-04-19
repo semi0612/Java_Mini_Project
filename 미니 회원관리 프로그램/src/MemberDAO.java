@@ -26,7 +26,7 @@ public class MemberDAO {
 		}
 	}
 
-	// 작성 순서 ① 컬렉션으로 리턴을 하는 select문 생성
+	// 컬렉션으로 리턴을 하는 select문 생성
 	public ArrayList<MemberDTO> select() {
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
 		// connection 맺을거 선언 및 초기화
@@ -82,7 +82,7 @@ public class MemberDAO {
 	} // end select()
 
 
-	// 작성순서 ② MemberGUI에 입력한 데이터를 MemberDAO 클래스의 insert 메소드에 넘겨준다
+	// MemberGUI에 입력한 데이터를 MemberDAO 클래스의 insert 메소드에 넘겨준다
 	public void insert(String name, String age, String height, String weight, String sex ) {
          Connection con = null;
          PreparedStatement pstmt  = null;
