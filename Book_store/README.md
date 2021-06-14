@@ -6,14 +6,14 @@
 2021.04.20 - 2021.05.28
 
 ### 1.3 팀원
-프로그래밍 : 이정연, 최샘이
+프로그래밍 : 이정연, 최샘이<br>
 디자인 구성 : 김용욱
 
 ### 1.4 개발 환경
-Eclipse (Java8_oxygen version)
-Oracle DataBase
-JSP
-Visual Studio Code
+Eclipse (Java8_oxygen version)<br>
+Oracle DataBase<br>
+JSP<br>
+Visual Studio Code<br>
 
 ------------------
 <br><br>
@@ -71,13 +71,13 @@ Visual Studio Code
 
 ## (관리자)
 - 관리자(미리 코드부분에서 admin으로 필터링)
-- 
+
 ### 상품(도서) 입고
 ![image](https://user-images.githubusercontent.com/51469989/121892608-f4edb500-cd57-11eb-8900-2ee31e8fa437.png)
 
 - 관리자로 로그인 하면 최상단의 헤더가 위와 같이 변경된다.
 - 이 중 입고하기 버튼을 누르면 아래와 같은 페이지로 이동되고,
-- 
+
 ![image](https://user-images.githubusercontent.com/51469989/121892616-f61ee200-cd57-11eb-9fdb-61dad0a19e79.png)
 
 - 입고할 도서 정보를 양식에 맞게 기입한다.
@@ -89,12 +89,12 @@ Visual Studio Code
 ![image](https://user-images.githubusercontent.com/51469989/121893016-72b1c080-cd58-11eb-8086-823a9d4e7c87.png)
 
 - 관리자 로그인 후 최상단에 노출된 목록 중 `상품 관리하기` 선택
-- 
+ 
 ![image](https://user-images.githubusercontent.com/51469989/121893060-7f361900-cd58-11eb-8b2c-a5d9ecd6d98c.png)
 
 - 현 시각 사이트에 존재하는 상품(도서)의 정보가 모두 출력된다.
 - 정보를 수정하고 싶은 상품 하단에 있는 `수정하기` 버튼 클릭
-- 
+
 ![image](https://user-images.githubusercontent.com/51469989/121893256-b6a4c580-cd58-11eb-879e-f36b4f7fefba.png)
 
 - 편집 페이지에서 양식에 맞게 수정하고 싶은 내용을 수정 후 재등록한다.
@@ -104,7 +104,7 @@ Visual Studio Code
 ![image](https://user-images.githubusercontent.com/51469989/121893436-ebb11800-cd58-11eb-862a-9441d7f0c5c5.png)
 
 - 관리자 로그인 후 최상단에 노출된 메뉴에서 `상품 삭제하기` 선택
-- 
+
 ![image](https://user-images.githubusercontent.com/51469989/121893495-f9ff3400-cd58-11eb-9a03-c625b7034a17.png)
 
 - 현 시각 사이트에 존재하는 상품(도서)의 정보가 모두 노출되며, 삭제하고픈 제품 하단에 위치한 `삭제` 버튼을 클릭
@@ -144,5 +144,5 @@ Visual Studio Code
 <br><br>
 
 # 미구현된 부분
-추천 서비스
+추천 서비스<br>
 마이페이지 일부 구간
