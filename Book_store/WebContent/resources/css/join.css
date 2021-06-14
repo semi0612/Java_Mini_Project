@@ -1,0 +1,43 @@
+
+
+.join{
+  margin-top: 30px;margin-left: 30%; margin-bottom: 60px;
+}
+
+.box{
+  width: 300px; height: 30px; border: 1px solid #666; padding: 10px;
+}
+.pbox{
+  width: 150px; height: 30px; border: 1px solid #666; padding: 10px;
+}
+.necessary{
+  font-size: small; color:red;
+}
+
+
+
+.option{
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.join-btn{
+  background:#f6fae1; color:rgb(36, 35, 35); width: 70px; border: 1px solid #666; height:30px; font-size: 10px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+.join-btn:hover {
+  background: rgb(252, 235, 6);
+}
+
+.join-title{
+  margin-top: 50px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.option-title {
+  
+  font-weight: bold;
+}

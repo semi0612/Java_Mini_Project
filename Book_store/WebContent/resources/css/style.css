@@ -1,0 +1,87 @@
+
+  div.top_header {
+    font-size: 13px;
+  }
+
+
+  div.title {
+    font-size: 200%;
+    font-weight: bold;
+    text-align: center;
+  }
+
+
+  ul.center {
+    margin: 0 auto;
+  }
+
+  div.a {
+    padding-top: 10px;
+    
+    
+  }
+  
+  .mypage_title {
+  	text-align: center;
+  	color: green; 
+  }
+  
+  
+  
+  
+
+
+  
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+
+html {
+  
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #444444;
+  font-size: 14px;
+  /* Set the fixed height of the footer here */
+  box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
+  background: #afcb3d;
+}
+
+#footer .credits {
+  padding-top: 5px;
+  font-size: 13px;
+  color: #444444;
+}
+
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #8av481;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 5px;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+  background: #e0edf7ec;
+  color: #fff;
+  text-decoration: none;
+}
