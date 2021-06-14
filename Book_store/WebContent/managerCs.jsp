@@ -1,0 +1,115 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page import="java.io.PrintWriter" %>    
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- 해당 페이지 타이틀 -->
+  <title>BookForest CustomerService</title>
+
+  <!-- css 파일적용 -->
+  <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./resources/css/style.css" rel="stylesheet">
+  
+  
+
+  <!-- 홈페이지 아이콘 -->
+  <link href="./resources/images/bookicon.png" rel="icon">
+  <!-- 폰트어썸 사용위한 코드 -->
+  <script src="https://kit.fontawesome.com/0a1668e1e9.js" crossorigin="anonymous"></script>
+  
+<style>
+  body {
+  	background-image: url(resources/images/background.jpg);
+  	min-height: 100%;
+  	background-repeat : no-repeat;
+    background-size : cover;
+}
+</style>
+</head>  
+<body>
+
+  <!-- 큰 하나의 컨테이너 생성 -->
+  <div class="container">
+
+    <!-- header.jsp 파일을 불러옵니다. -->
+    <%@ include file="header.jsp" %>
+	
+
+    <!-- 콘텐츠 부분 -->
+    
+    <br>
+    <h3 style="text-align: center; margin-top: 20px; margin-bottom: 20px;"><i class="fas fa-book"></i> 문의사항 답변</h3>
+    
+    <div class="container">
+	
+      <div class="row">
+				<form method="post" action="emailSendAction.jsp" style="width:100%; height:100%;">
+					<table class="table table-striped" style="text-align: center;">
+						
+
+						<thead>
+							<tr>
+								<th colspan="2" style="background-color: #fcfbf8; text-align: center;"> 고객센터 답변 </th>
+							</tr>		
+						</thead>			
+
+							
+
+						
+
+						<tbody>
+							
+							
+							<tr>
+								<td><input type="text" class="form-control" placeholder="받는사람 이메일" name="user_email" maxlength="50"></td>
+							</tr>
+							
+							<tr>	
+								<td><textarea class="form-control" placeholder="답변 내용" name="manager_ask" maxlength="3000" style="height: 300px;"></textarea></td>
+							</tr>	
+									
+
+						</tbody>
+
+
+
+
+					</table>
+					
+					<input type="submit" class="btn btn-success" value="답변하기">
+					
+						
+						
+					</form>	
+					
+					
+
+
+
+
+			</div>
+			
+			
+    
+    </div>
+    
+</div><!-- 큰 컨테이너 닫는 /div -->
+
+
+	<!-- footer.jsp 파일을 불러옵니다. -->
+    <%@ include file="footer.jsp" %>
+
+
+
+
+
+
+  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+  <script src="./resources/js/bootstrap.min.js"></script>
+  <!-- 이 스크립트 파일은 네비게이션바(메뉴바)의 드롭다운 기능을 가지고있습니다.-->
+  <script src="./resources/js/bundle.min.js"></script>
+
+</body>
+</html>
