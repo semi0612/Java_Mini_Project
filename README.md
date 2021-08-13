@@ -4,7 +4,7 @@
 
 ✨ 사용 프로그램 <br>
 : Eclipse (Java8_oxygen version) <br>
-: Oracle DataBase
+: Oracle DataBase, MySQL
 
 ## 🌱
 
